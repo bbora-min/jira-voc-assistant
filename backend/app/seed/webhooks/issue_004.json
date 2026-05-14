@@ -1,0 +1,15 @@
+{
+  "webhookEvent": "jira:issue_created",
+  "timestamp": 1746001800000,
+  "issue": {
+    "key": "SPIM-3025",
+    "fields": {
+      "summary": "[기능 요청] 라이선스 정책 위반 사전 알림",
+      "description": "현재는 빌드가 끝난 후에야 정책 위반이 보고됩니다. 빌드 시작 단계에서 위반 가능성을 사전 경고해주는 옵션이 있으면 좋겠습니다. 가능한지, 일정은 어떻게 되는지 알고 싶습니다.",
+      "reporter": {"accountId": "u-5512", "displayName": "최도윤"},
+      "assignee": {"accountId": "spim-ops", "displayName": "SPIM 운영"},
+      "status": {"name": "To Do"}
+    }
+  },
+  "changelog": {"id": "10004"}
+}

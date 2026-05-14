@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(claude-api)",
+      "Skill(claude-api:*)",
+      "Bash(.venv/bin/python -c \"from app.models import Base; print\\('tables:', sorted\\(Base.metadata.tables.keys\\(\\)\\)\\)\")",
+      "Bash(.venv/bin/python -c ' *)",
+      "Bash(.venv/bin/python -c \"from app.main import app; print\\('OK:', len\\(app.routes\\), 'routes'\\)\")",
+      "Bash(curl -s http://127.0.0.1:8080/api/tickets/1)",
+      "Bash(python3 -c ' *)",
+      "Bash(curl -s http://127.0.0.1:5173/api/tickets/3)",
+      "Bash(kill 16201 16202)",
+      "Bash(curl -s -X POST http://localhost:8080/api/tickets/1/approve)",
+      "Bash(python3 -c \"import json,sys;d=json.load\\(sys.stdin\\);print\\(f'  티켓3 reject\\(not_adopt\\): {d}'\\)\")",
+      "Bash(curl -s -X POST http://localhost:8080/api/tickets/4/reclassify -H 'Content-Type: application/json' -d '{\"category_id\":1}')",
+      "Bash(python3 -c \"import json,sys;d=json.load\\(sys.stdin\\);print\\(f'  티켓4 reclassify: {d}'\\)\")",
+      "Bash(curl -s -X POST http://localhost:8080/api/tickets/4/approve)",
+      "Bash(python3 -c \"import json,sys;d=json.load\\(sys.stdin\\);print\\(f'  티켓5 reject\\(not_adopt\\): {d}'\\)\")",
+      "Bash(curl -s \"http://localhost:8080/api/kpi/summary?group_by=day\")",
+      "Bash(curl -s \"http://localhost:8080/api/kpi/rejection-reasons?limit=10\")",
+      "Bash(curl -s -w \"HTTP %{http_code}\\\\n\" \"http://localhost:8080/api/kpi/rejection-reasons?limit=10\")",
+      "Bash(curl -s \"http://localhost:8080/api/kpi/rejection-reasons?limit=5\")"
+    ]
+  }
+}

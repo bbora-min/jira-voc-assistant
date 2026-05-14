@@ -1,0 +1,16 @@
+{
+  "webhookEvent": "jira:issue_created",
+  "timestamp": 1746000000000,
+  "issue": {
+    "key": "SPIM-3001",
+    "fields": {
+      "summary": "SBOM Export가 실패합니다",
+      "description": "어제부터 신규 프로젝트에서 sbom-cli verify 실행 시 'license metadata missing' 오류로 export가 멈춥니다. 빌드 파이프라인에서 어떻게 해결할 수 있을까요?",
+      "reporter": {"accountId": "u-7711", "displayName": "김지훈"},
+      "assignee": {"accountId": "spim-ops", "displayName": "SPIM 운영"},
+      "status": {"name": "To Do"},
+      "attachment": []
+    }
+  },
+  "changelog": {"id": "10001"}
+}

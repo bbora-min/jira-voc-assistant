@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Node
+node_modules/
+dist/
+.vite/
+
+# Env / secrets
+.env
+.env.local
+*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.idea/
+.vscode/
+*.swp
+
+# Claude Code local overrides (개인 권한 설정)
+.claude/settings.local.json
+
+# Runtime data
+backend/var/
+chroma-data/
+mysql-data/
+redis-data/
+*.log
+
+# Build artifacts
+frontend/build/
+backend/build/

@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline": "#76777d",
+                      "on-secondary-container": "#54647a",
+                      "surface-container-high": "#eae7e9",
+                      "error-container": "#ffdad6",
+                      "surface-bright": "#fcf8fa",
+                      "on-error-container": "#93000a",
+                      "surface-container-highest": "#e4e2e4",
+                      "on-tertiary-fixed": "#271901",
+                      "on-surface": "#1b1b1d",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary-fixed": "#0b1c30",
+                      "outline-variant": "#c6c6cd",
+                      "primary-fixed-dim": "#bec6e0",
+                      "primary": "#000000",
+                      "surface-container": "#f0edef",
+                      "surface": "#fcf8fa",
+                      "on-tertiary": "#ffffff",
+                      "surface-dim": "#dcd9db",
+                      "surface-container-low": "#f6f3f5",
+                      "on-surface-variant": "#45464d",
+                      "inverse-on-surface": "#f3f0f2",
+                      "tertiary-container": "#271901",
+                      "on-primary-fixed-variant": "#3f465c",
+                      "primary-container": "#131b2e",
+                      "on-tertiary-container": "#98805d",
+                      "inverse-surface": "#303032",
+                      "primary-fixed": "#dae2fd",
+                      "surface-variant": "#e4e2e4",
+                      "on-secondary-fixed-variant": "#38485d",
+                      "inverse-primary": "#bec6e0",
+                      "tertiary": "#000000",
+                      "secondary": "#505f76",
+                      "on-error": "#ffffff",
+                      "secondary-fixed": "#d3e4fe",
+                      "secondary-container": "#d0e1fb",
+                      "secondary-fixed-dim": "#b7c8e1",
+                      "on-tertiary-fixed-variant": "#574425",
+                      "on-primary": "#ffffff",
+                      "background": "#fcf8fa",
+                      "surface-tint": "#565e74",
+                      "on-secondary": "#ffffff",
+                      "tertiary-fixed-dim": "#dec29a",
+                      "tertiary-fixed": "#fcdeb5",
+                      "error": "#ba1a1a",
+                      "on-primary-fixed": "#131b2e",
+                      "on-background": "#1b1b1d",
+                      "on-primary-container": "#7c839b"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "stack-sm": "8px",
+                      "table-row-height": "48px",
+                      "stack-lg": "32px",
+                      "base": "4px",
+                      "stack-md": "16px",
+                      "gutter": "16px",
+                      "container-margin": "24px",
+                      "card-padding": "20px"
+              },
+              "fontFamily": {
+                      "body-sm": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "title-sm": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "body-md": ["Inter"],
+                      "label-caps": ["Inter"],
+                      "mono-data": ["Inter"]
+              },
+              "fontSize": {
+                      "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "title-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                      "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "label-caps": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                      "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "500"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; background-color: #fcf8fa; color: #1b1b1d; }
+    </style>
+</head>
+<body class="flex min-h-screen bg-background">
+<!-- SideNavBar -->
+<aside class="flex flex-col h-full sticky top-0 overflow-y-auto bg-slate-900 h-screen w-64 border-r border-slate-800 font-inter antialiased tracking-tight">
+<div class="px-6 py-8 flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-blue-500 flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-lg" data-icon="rocket_launch">rocket_launch</span>
+</div>
+<div>
+<h1 class="text-lg font-bold text-white tracking-widest uppercase">VoC Intel</h1>
+<p class="text-[10px] text-slate-400 uppercase tracking-widest">AI Automation</p>
+</div>
+</div>
+<nav class="flex-1 px-3 space-y-1">
+<a class="flex items-center px-3 py-2.5 rounded text-slate-400 hover:text-slate-100 hover:bg-slate-800/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="dashboard">dashboard</span>
+<span class="text-body-md font-body-md">Dashboard</span>
+</a>
+<a class="flex items-center px-3 py-2.5 rounded bg-slate-800 text-white font-semibold border-l-4 border-blue-500 transition-all" href="#">
+<span class="material-symbols-outlined mr-3 text-blue-500" data-icon="analytics">analytics</span>
+<span class="text-body-md font-body-md">Analytics</span>
+</a>
+<a class="flex items-center px-3 py-2.5 rounded text-slate-400 hover:text-slate-100 hover:bg-slate-800/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="auto_mode">auto_mode</span>
+<span class="text-body-md font-body-md">Automation</span>
+</a>
+<a class="flex items-center px-3 py-2.5 rounded text-slate-400 hover:text-slate-100 hover:bg-slate-800/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="category">category</span>
+<span class="text-body-md font-body-md">Classification</span>
+</a>
+<a class="flex items-center px-3 py-2.5 rounded text-slate-400 hover:text-slate-100 hover:bg-slate-800/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="model_training">model_training</span>
+<span class="text-body-md font-body-md">Training</span>
+</a>
+</nav>
+<div class="px-6 py-4 border-t border-slate-800">
+<div class="flex items-center gap-2 text-blue-400">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+</span>
+<span class="text-[11px] font-medium">System Status: Active</span>
+</div>
+</div>
+<footer class="px-3 py-4 space-y-1">
+<a class="flex items-center px-3 py-2 rounded text-slate-400 hover:text-slate-100 hover:bg-slate-800/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="settings">settings</span>
+<span class="text-body-sm font-body-sm">Settings</span>
+</a>
+<a class="flex items-center px-3 py-2 rounded text-slate-400 hover:text-slate-100 hover:bg-slate-800/50 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="help_outline">help_outline</span>
+<span class="text-body-sm font-body-sm">Support</span>
+</a>
+</footer>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-w-0">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center px-6 py-3 sticky top-0 w-full z-40 bg-white/80 backdrop-blur-md border-b border-slate-200 shadow-sm font-inter text-sm font-medium">
+<div class="flex items-center gap-8">
+<h2 class="text-xl font-bold text-slate-900">Operational Overview</h2>
+<div class="relative hidden lg:flex items-center">
+<button class="flex items-center gap-2 px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-lg hover:bg-slate-100 transition-all text-slate-700">
+<span class="material-symbols-outlined text-sm" data-icon="calendar_month">calendar_month</span>
+<span class="font-medium">Monthly: December 2023</span>
+<span class="material-symbols-outlined text-sm" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4 text-slate-500">
+<a class="text-slate-500 hover:text-slate-900 transition-all" href="#">Reports</a>
+<a class="text-slate-500 hover:text-slate-900 transition-all" href="#">Logs</a>
+<a class="text-slate-500 hover:text-slate-900 transition-all" href="#">Queue</a>
+</div>
+<div class="h-6 w-px bg-slate-200"></div>
+<button class="flex items-center gap-2 px-4 py-1.5 bg-primary text-white rounded font-semibold hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="refresh">refresh</span>
+                    Refresh Data
+                </button>
+<div class="flex items-center gap-3">
+<button class="p-1.5 text-slate-500 hover:bg-slate-50 rounded transition-all"><span class="material-symbols-outlined" data-icon="notifications">notifications</span></button>
+<button class="p-1.5 text-slate-500 hover:bg-slate-50 rounded transition-all"><span class="material-symbols-outlined" data-icon="history">history</span></button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-slate-200">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a corporate manager in a high-tech office setting. The lighting is soft and even, typical of a professional studio environment. The style is clean and modern, matching a minimalist digital dashboard aesthetic. The background is a slightly blurred office with glass walls and neutral tones of white and light gray." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrgrGjdOkjxytsyERUtGh9nh8T6t4dw7UFbX4phd3obZOwlsIPHmB5Ti2iLTwenUovqf21yqE_hE0WTqUJUhKsQZlS5aEdFMgcPQt23315XogtCuYYst1iq9EUlGIp2ZwoOp71QIjRu7KuHZONkM9vqo7xaAd8uqKt8rxTmMM41HLOz3dCnvrSBbEE_diJ0DbeMYZX6IHnzMFUdFz3CSeWlQfwTGQI7E1xUU3MAUfBt23lZx1glbj-rutFMJfAuxGN7ic2nTFpCJpa"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Dashboard Canvas -->
+<div class="p-6 overflow-y-auto space-y-6">
+<!-- AI Insight Banner -->
+<div class="p-4 bg-blue-50 border-l-4 border-blue-500 rounded-lg flex items-start gap-4">
+<span class="material-symbols-outlined text-blue-600 mt-0.5" data-icon="auto_awesome">auto_awesome</span>
+<div>
+<h4 class="text-body-md font-semibold text-blue-900">AI Insight: Process Optimization Opportunity</h4>
+<p class="text-body-sm text-blue-800">Based on last week's volume, increasing AI classification confidence thresholds by 2% could reduce manual processing time by an estimated 4.5 hours per week.</p>
+</div>
+</div>
+<!-- Top Section: KPI Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- KPI 1 -->
+<div class="bg-white p-card-padding border border-slate-200 rounded-lg flex flex-col justify-between">
+<div>
+<span class="text-label-caps font-label-caps text-slate-500 uppercase tracking-wider">AI ADOPTION RATE</span>
+<div class="flex items-baseline gap-3 mt-1">
+<span class="text-display-lg font-display-lg text-slate-900">92%</span>
+<span class="flex items-center text-xs font-bold text-green-600">
+<span class="material-symbols-outlined text-xs" data-icon="arrow_upward">arrow_upward</span>
+                                4.2%
+                            </span>
+</div>
+</div>
+<div class="mt-4">
+<div class="flex justify-between items-center mb-1">
+<span class="text-body-sm text-slate-500">Target: 85%</span>
+<span class="px-2 py-0.5 bg-green-100 text-green-700 text-[10px] font-bold rounded-full">EXCEEDING</span>
+</div>
+<div class="w-full bg-slate-100 h-1.5 rounded-full">
+<div class="bg-green-500 h-1.5 rounded-full" style="width: 92%"></div>
+</div>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="bg-white p-card-padding border border-slate-200 rounded-lg flex flex-col justify-between">
+<div>
+<span class="text-label-caps font-label-caps text-slate-500 uppercase tracking-wider">AVG PROCESSING TIME</span>
+<div class="flex items-baseline gap-3 mt-1">
+<span class="text-display-lg font-display-lg text-slate-900">1.2h</span>
+<span class="flex items-center text-xs font-bold text-blue-600">
+<span class="material-symbols-outlined text-xs" data-icon="arrow_downward">arrow_downward</span>
+                                15m
+                            </span>
+</div>
+</div>
+<div class="mt-4">
+<div class="flex justify-between items-center mb-1">
+<span class="text-body-sm text-slate-500">Target: 2.0h</span>
+<span class="px-2 py-0.5 bg-blue-100 text-blue-700 text-[10px] font-bold rounded-full">OPTIMAL</span>
+</div>
+<div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+<div class="bg-blue-500 h-1.5 rounded-full" style="width: 60%"></div>
+</div>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="bg-white p-card-padding border border-slate-200 rounded-lg flex flex-col justify-between">
+<div>
+<span class="text-label-caps font-label-caps text-slate-500 uppercase tracking-wider">TICKET VOLUME GROWTH</span>
+<div class="flex items-baseline gap-3 mt-1">
+<span class="text-display-lg font-display-lg text-slate-900">+15%</span>
+<span class="text-body-sm text-slate-500">vs last month</span>
+</div>
+</div>
+<div class="mt-4 h-12 flex items-end gap-1">
+<!-- Tiny Sparkline Mockup -->
+<div class="flex-1 bg-slate-100 h-[20%] rounded-t-sm"></div>
+<div class="flex-1 bg-slate-100 h-[40%] rounded-t-sm"></div>
+<div class="flex-1 bg-slate-100 h-[35%] rounded-t-sm"></div>
+<div class="flex-1 bg-slate-200 h-[60%] rounded-t-sm"></div>
+<div class="flex-1 bg-slate-200 h-[55%] rounded-t-sm"></div>
+<div class="flex-1 bg-blue-500 h-[85%] rounded-t-sm"></div>
+<div class="flex-1 bg-blue-600 h-[100%] rounded-t-sm"></div>
+</div>
+</div>
+</div>
+<!-- Middle Section: AI Stats & Processing -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
+<!-- AI Classification Stats -->
+<div class="bg-white p-card-padding border border-slate-200 rounded-lg">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-title-sm font-title-sm text-slate-900">AI Classification Stats</h3>
+<button class="text-slate-400 hover:text-slate-600"><span class="material-symbols-outlined" data-icon="more_horiz">more_horiz</span></button>
+</div>
+<div class="space-y-6">
+<div class="space-y-2">
+<div class="flex justify-between text-body-sm">
+<span class="font-medium text-slate-700">System Issue</span>
+<span class="font-mono-data text-slate-900">98% Accuracy</span>
+</div>
+<div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+<div class="bg-slate-900 h-full rounded-full" style="width: 98%"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-body-sm">
+<span class="font-medium text-slate-700">Dev Request</span>
+<span class="font-mono-data text-slate-900">85% Accuracy</span>
+</div>
+<div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+<div class="bg-slate-900 h-full rounded-full" style="width: 85%"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-body-sm">
+<span class="font-medium text-slate-700">Billing Inquiry</span>
+<span class="font-mono-data text-slate-900">92% Accuracy</span>
+</div>
+<div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+<div class="bg-slate-900 h-full rounded-full" style="width: 92%"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-body-sm">
+<span class="font-medium text-slate-700">Account Security</span>
+<span class="font-mono-data text-slate-900">95% Accuracy</span>
+</div>
+<div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+<div class="bg-slate-900 h-full rounded-full" style="width: 95%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Weekly Processing Status -->
+<div class="bg-white p-card-padding border border-slate-200 rounded-lg">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-title-sm font-title-sm text-slate-900">Weekly Processing Status</h3>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1.5">
+<div class="w-2.5 h-2.5 rounded-full bg-slate-900"></div>
+<span class="text-xs text-slate-500">AI Auto</span>
+</div>
+<div class="flex items-center gap-1.5">
+<div class="w-2.5 h-2.5 rounded-full bg-slate-300"></div>
+<span class="text-xs text-slate-500">Manual</span>
+</div>
+</div>
+</div>
+<div class="flex items-end justify-between h-[200px] mt-4 px-2">
+<!-- Week 1 -->
+<div class="flex flex-col items-center gap-2 w-full">
+<div class="flex items-end gap-1 h-[160px]">
+<div class="w-8 bg-slate-900 rounded-t-sm" style="height: 70%"></div>
+<div class="w-8 bg-slate-300 rounded-t-sm" style="height: 30%"></div>
+</div>
+<span class="text-[10px] font-medium text-slate-400 uppercase">W48</span>
+</div>
+<!-- Week 2 -->
+<div class="flex flex-col items-center gap-2 w-full">
+<div class="flex items-end gap-1 h-[160px]">
+<div class="w-8 bg-slate-900 rounded-t-sm" style="height: 75%"></div>
+<div class="w-8 bg-slate-300 rounded-t-sm" style="height: 25%"></div>
+</div>
+<span class="text-[10px] font-medium text-slate-400 uppercase">W49</span>
+</div>
+<!-- Week 3 -->
+<div class="flex flex-col items-center gap-2 w-full">
+<div class="flex items-end gap-1 h-[160px]">
+<div class="w-8 bg-slate-900 rounded-t-sm" style="height: 82%"></div>
+<div class="w-8 bg-slate-300 rounded-t-sm" style="height: 18%"></div>
+</div>
+<span class="text-[10px] font-medium text-slate-400 uppercase">W50</span>
+</div>
+<!-- Week 4 -->
+<div class="flex flex-col items-center gap-2 w-full">
+<div class="flex items-end gap-1 h-[160px]">
+<div class="w-8 bg-slate-900 rounded-t-sm" style="height: 92%"></div>
+<div class="w-8 bg-slate-300 rounded-t-sm" style="height: 8%"></div>
+</div>
+<span class="text-[10px] font-medium text-slate-400 uppercase">W51</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Section: Distribution & Trends -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
+<!-- VoC Type Distribution -->
+<div class="bg-white p-card-padding border border-slate-200 rounded-lg">
+<h3 class="text-title-sm font-title-sm text-slate-900 mb-6">VoC Type Distribution</h3>
+<div class="flex flex-col md:flex-row items-center gap-10">
+<div class="relative w-40 h-40">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<circle cx="18" cy="18" fill="transparent" r="15.915" stroke="#f1f5f9" stroke-width="3"></circle>
+<circle cx="18" cy="18" fill="transparent" r="15.915" stroke="#0f172a" stroke-dasharray="40 60" stroke-dashoffset="0" stroke-width="3"></circle>
+<circle cx="18" cy="18" fill="transparent" r="15.915" stroke="#475569" stroke-dasharray="25 75" stroke-dashoffset="-40" stroke-width="3"></circle>
+<circle cx="18" cy="18" fill="transparent" r="15.915" stroke="#94a3b8" stroke-dasharray="20 80" stroke-dashoffset="-65" stroke-width="3"></circle>
+<circle cx="18" cy="18" fill="transparent" r="15.915" stroke="#cbd5e1" stroke-dasharray="15 85" stroke-dashoffset="-85" stroke-width="3"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-xl font-bold text-slate-900">2.4k</span>
+<span class="text-[10px] text-slate-500 uppercase font-bold">Total</span>
+</div>
+</div>
+<div class="flex-1 space-y-4">
+<div class="flex items-center justify-between text-body-sm">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-sm bg-slate-900"></div>
+<span class="text-slate-600">SBOM Reports</span>
+</div>
+<span class="font-mono-data text-slate-900">40%</span>
+</div>
+<div class="flex items-center justify-between text-body-sm">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-sm bg-slate-600"></div>
+<span class="text-slate-600">SPIM Reports</span>
+</div>
+<span class="font-mono-data text-slate-900">25%</span>
+</div>
+<div class="flex items-center justify-between text-body-sm">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-sm bg-slate-400"></div>
+<span class="text-slate-600">Error Reports</span>
+</div>
+<span class="font-mono-data text-slate-900">20%</span>
+</div>
+<div class="flex items-center justify-between text-body-sm">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-sm bg-slate-300"></div>
+<span class="text-slate-600">Feature Requests</span>
+</div>
+<span class="font-mono-data text-slate-900">15%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Adoption Rate Trend -->
+<div class="bg-white p-card-padding border border-slate-200 rounded-lg flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-title-sm font-title-sm text-slate-900">Adoption Rate Trend</h3>
+<span class="text-body-sm text-slate-500">8-Week History</span>
+</div>
+<div class="relative flex-1 min-h-[160px] w-full mt-2">
+<!-- Simple Target Line at 85% -->
+<div class="absolute top-[30%] w-full border-t border-dashed border-red-400 z-10">
+<span class="absolute right-0 -top-4 text-[9px] font-bold text-red-500 uppercase bg-white px-1">Target 85%</span>
+</div>
+<!-- Grid Lines -->
+<div class="absolute inset-0 flex flex-col justify-between py-2">
+<div class="w-full border-b border-slate-50"></div>
+<div class="w-full border-b border-slate-50"></div>
+<div class="w-full border-b border-slate-50"></div>
+<div class="w-full border-b border-slate-50"></div>
+<div class="w-full border-b border-slate-100"></div>
+</div>
+<!-- Mockup Trend Line (using SVG for clarity) -->
+<svg class="absolute inset-0 w-full h-full" preserveaspectratio="none" viewbox="0 0 100 100">
+<path d="M0,80 L14,75 L28,78 L42,65 L56,50 L70,45 L84,35 L100,20" fill="none" stroke="#3b82f6" stroke-width="2" vector-effect="non-scaling-stroke"></path>
+<path d="M0,80 L14,75 L28,78 L42,65 L56,50 L70,45 L84,35 L100,20 L100,100 L0,100 Z" fill="url(#gradient-blue)" opacity="0.1"></path>
+<defs>
+<lineargradient id="gradient-blue" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#3b82f6"></stop>
+<stop offset="100%" stop-color="#3b82f6" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+</svg>
+<!-- Points -->
+<div class="absolute top-[80%] left-[0%] w-2 h-2 -ml-1 -mt-1 bg-blue-500 rounded-full border border-white"></div>
+<div class="absolute top-[20%] left-[100%] w-2 h-2 -ml-1 -mt-1 bg-blue-500 rounded-full border border-white"></div>
+</div>
+<div class="flex justify-between mt-4">
+<span class="text-[10px] text-slate-400 font-medium">OCT 24</span>
+<span class="text-[10px] text-slate-400 font-medium">NOV 07</span>
+<span class="text-[10px] text-slate-400 font-medium">NOV 21</span>
+<span class="text-[10px] text-slate-400 font-medium">DEC 05</span>
+<span class="text-[10px] text-slate-400 font-medium">DEC 19</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

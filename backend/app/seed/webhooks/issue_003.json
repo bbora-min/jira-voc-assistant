@@ -1,0 +1,15 @@
+{
+  "webhookEvent": "jira:issue_created",
+  "timestamp": 1746001200000,
+  "issue": {
+    "key": "SBOM-4011",
+    "fields": {
+      "summary": "VOC 대시보드 접근 권한 신청 가이드 요청",
+      "description": "신규 입사자에게 VOC 대시보드 권한을 부여하려는데 절차가 명확하지 않습니다. 권한 신청부터 부여까지의 전체 단계를 안내해주실 수 있나요?",
+      "reporter": {"accountId": "u-9009", "displayName": "이서연"},
+      "assignee": {"accountId": "spim-ops", "displayName": "SPIM 운영"},
+      "status": {"name": "To Do"}
+    }
+  },
+  "changelog": {"id": "10003"}
+}

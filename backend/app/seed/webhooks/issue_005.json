@@ -1,0 +1,15 @@
+{
+  "webhookEvent": "jira:issue_created",
+  "timestamp": 1746002400000,
+  "issue": {
+    "key": "SBOM-4022",
+    "fields": {
+      "summary": "SPDX 2.3 vs CycloneDX 1.5 - 외부 제출 시 어떤 포맷?",
+      "description": "외부 클라이언트에 SBOM을 제출해야 하는데 SPDX 2.3과 CycloneDX 1.5 중 어느 포맷을 사용해야 할지 가이드 부탁드립니다.",
+      "reporter": {"accountId": "u-3344", "displayName": "정하늘"},
+      "assignee": {"accountId": "spim-ops", "displayName": "SPIM 운영"},
+      "status": {"name": "To Do"}
+    }
+  },
+  "changelog": {"id": "10005"}
+}

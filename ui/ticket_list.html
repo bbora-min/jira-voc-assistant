@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>InsightEngine | AI VoC Automation Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#000000",
+                        "secondary": "#505f76",
+                        "primary-container": "#131b2e",
+                        "surface": "#fcf8fa",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#7c839b",
+                        "inverse-primary": "#bec6e0",
+                        "on-surface": "#1b1b1d",
+                        "secondary-fixed": "#d3e4fe",
+                        "on-secondary-fixed": "#0b1c30",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "outline": "#76777d",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "error-container": "#ffdad6",
+                        "surface-container": "#f0edef",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-primary-fixed": "#131b2e",
+                        "surface-container-highest": "#e4e2e4",
+                        "on-error": "#ffffff",
+                        "outline-variant": "#c6c6cd",
+                        "surface-tint": "#565e74",
+                        "inverse-surface": "#303032",
+                        "primary": "#000000",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "surface-variant": "#e4e2e4",
+                        "background": "#fcf8fa",
+                        "on-secondary": "#ffffff",
+                        "surface-bright": "#fcf8fa",
+                        "on-background": "#1b1b1d",
+                        "surface-container-high": "#eae7e9",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "on-surface-variant": "#45464d",
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#271901",
+                        "surface-dim": "#dcd9db",
+                        "surface-container-low": "#f6f3f5",
+                        "on-tertiary-fixed": "#271901",
+                        "secondary-container": "#d0e1fb",
+                        "on-tertiary-container": "#98805d",
+                        "tertiary-fixed": "#fcdeb5",
+                        "primary-fixed": "#dae2fd",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "on-secondary-container": "#54647a",
+                        "inverse-on-surface": "#f3f0f2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "table-row-height": "48px",
+                        "stack-lg": "32px",
+                        "gutter": "16px",
+                        "stack-md": "16px",
+                        "base": "4px",
+                        "container-margin": "24px",
+                        "stack-sm": "8px",
+                        "card-padding": "20px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "mono-data": ["Inter"],
+                        "title-sm": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "label-caps": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "500"}],
+                        "title-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #cbd5e1; }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-background antialiased">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 flex flex-col h-full z-50 h-screen w-64 border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 font-['Inter'] text-sm antialiased tracking-tight shadow-none">
+<div class="px-6 py-8">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-8 h-8 bg-primary rounded flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[20px]" data-icon="psychology">psychology</span>
+</div>
+<div>
+<h1 class="text-lg font-bold text-slate-900 dark:text-slate-50 tracking-tight">InsightEngine</h1>
+<p class="text-[10px] text-on-primary-container font-medium uppercase tracking-widest">AI VoC Platform</p>
+</div>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-2 bg-slate-50 dark:bg-slate-900 text-blue-600 dark:text-blue-400 font-semibold border-r-2 border-blue-600 transition-colors duration-150 cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors duration-150 cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+<span class="">AI Training</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors duration-150 cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="">History</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors duration-150 cursor-pointer active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="">Settings</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto p-6">
+<div class="bg-surface-container rounded-lg p-4 border border-outline-variant">
+<p class="font-label-caps text-on-surface-variant mb-2">SYSTEM STATUS</p>
+<div class="flex items-center gap-2">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+</span>
+<span class="text-body-sm font-medium text-on-surface">AI Processing Active</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopNavBar -->
+<header class="sticky top-0 right-0 flex items-center justify-between px-6 h-16 z-40 ml-64 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 font-['Inter'] text-sm shadow-none">
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant" data-icon="search">search</span>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded px-10 py-1.5 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-all text-body-md" placeholder="Search automation logs..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2 text-on-primary-fixed-variant">
+<span class="font-label-caps text-secondary">PROJECT:</span>
+<span class="font-semibold text-primary">VoC Automation</span>
+</div>
+<div class="flex items-center gap-4 border-l border-slate-200 pl-6">
+<button class="relative text-slate-500 hover:text-slate-900 active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute -top-1 -right-1 w-4 h-4 bg-error text-white text-[9px] rounded-full flex items-center justify-center font-bold">3</span>
+</button>
+<div class="flex items-center gap-3 cursor-pointer active:scale-95 duration-200">
+<div class="text-right">
+<p class="text-[12px] font-bold text-on-surface leading-none">Admin User</p>
+<p class="text-[10px] text-outline leading-none mt-1">Platform Admin</p>
+</div>
+<img alt="Administrator Profile" class="w-8 h-8 rounded-full border border-outline-variant" data-alt="A professional headshot of a middle-aged male administrator with a confident expression, wearing a tailored navy blue suit. The background is a blurred high-end corporate office with soft, natural lighting, maintaining a bright and authoritative aesthetic consistent with an enterprise-grade AI software platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAB_8_QdO2kaxf7tfj2pUYySPVgAcWv02LYcM4QWgePQ_L6gNYkoNQMj78s-fwhGN5Dn58VZ0wXO0-ylng1rWDGsYMZjkoroCtdwRCkrYeKfISde3QjYCuEhZQoibEou4Uab5FelPcKuPUpM4tXRWtkr2LdfuLl-feUmd0UwWHQNggkel8EigVX-n3qM7soWj_uSM6IbloFD0udltiOz8BokPrLXnZxUF4VtXPTjx70IvkXV6o0MY0ka2B358YYpx6MrwAnW9c1VQCW"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="ml-64 p-container-margin">
+<!-- KPI Summary Section -->
+<div class="grid grid-cols-4 gap-gutter mb-stack-lg">
+<div class="bg-white border border-outline-variant p-card-padding rounded shadow-none">
+<div class="flex justify-between items-start mb-2">
+<span class="text-label-caps text-secondary font-label-caps">TOTAL TICKETS</span>
+<span class="material-symbols-outlined text-blue-600" data-icon="confirmation_number">confirmation_number</span>
+</div>
+<h3 class="text-display-lg font-display-lg text-primary">1,248</h3>
+<div class="flex items-center gap-1 mt-2">
+<span class="material-symbols-outlined text-green-500 text-sm" data-icon="trending_up">trending_up</span>
+<span class="text-body-sm text-green-600 font-medium">+12% vs last week</span>
+</div>
+</div>
+<div class="bg-white border border-outline-variant p-card-padding rounded shadow-none">
+<div class="flex justify-between items-start mb-2">
+<span class="text-label-caps text-secondary font-label-caps">AI PENDING</span>
+<span class="material-symbols-outlined text-orange-500" data-icon="pending_actions">pending_actions</span>
+</div>
+<h3 class="text-display-lg font-display-lg text-primary">42</h3>
+<div class="flex items-center gap-1 mt-2">
+<span class="material-symbols-outlined text-orange-500 text-sm" data-icon="history">history</span>
+<span class="text-body-sm text-orange-600 font-medium">Avg delay: 4m</span>
+</div>
+</div>
+<div class="bg-white border border-outline-variant p-card-padding rounded shadow-none">
+<div class="flex justify-between items-start mb-2">
+<span class="text-label-caps text-secondary font-label-caps">ADOPTION RATE</span>
+<span class="material-symbols-outlined text-green-600" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<h3 class="text-display-lg font-display-lg text-primary">92%</h3>
+<div class="flex items-center gap-1 mt-2">
+<div class="w-full bg-slate-100 h-1 rounded-full overflow-hidden">
+<div class="bg-blue-600 h-full w-[92%]"></div>
+</div>
+</div>
+</div>
+<div class="bg-white border border-outline-variant p-card-padding rounded shadow-none">
+<div class="flex justify-between items-start mb-2">
+<span class="text-label-caps text-secondary font-label-caps">AVG RESPONSE</span>
+<span class="material-symbols-outlined text-blue-600" data-icon="speed">speed</span>
+</div>
+<h3 class="text-display-lg font-display-lg text-primary">1.5h</h3>
+<div class="flex items-center gap-1 mt-2">
+<span class="material-symbols-outlined text-green-500 text-sm" data-icon="arrow_downward">arrow_downward</span>
+<span class="text-body-sm text-green-600 font-medium">18m faster than target</span>
+</div>
+</div>
+</div>
+<!-- Filter & Actions Section -->
+<div class="bg-white border border-outline-variant p-4 rounded-lg flex items-center justify-between mb-stack-md">
+<div class="flex items-center gap-4">
+<div class="flex border border-outline-variant rounded overflow-hidden">
+<button class="px-4 py-1.5 bg-primary text-white text-body-sm font-medium">All</button>
+<button class="px-4 py-1.5 bg-white text-on-surface text-body-sm font-medium border-l border-outline-variant hover:bg-slate-50">Pending</button>
+<button class="px-4 py-1.5 bg-white text-on-surface text-body-sm font-medium border-l border-outline-variant hover:bg-slate-50">In Progress</button>
+<button class="px-4 py-1.5 bg-white text-on-surface text-body-sm font-medium border-l border-outline-variant hover:bg-slate-50">Completed</button>
+</div>
+<div class="h-6 w-px bg-outline-variant mx-2"></div>
+<select class="bg-white border border-outline-variant rounded px-3 py-1.5 text-body-sm focus:ring-1 focus:ring-blue-600 focus:outline-none">
+<option>All Categories</option>
+<option>System Issue</option>
+<option>Function Query</option>
+<option>Dev Request</option>
+</select>
+<select class="bg-white border border-outline-variant rounded px-3 py-1.5 text-body-sm focus:ring-1 focus:ring-blue-600 focus:outline-none">
+<option>Priority: All</option>
+<option>High</option>
+<option>Medium</option>
+<option>Low</option>
+</select>
+</div>
+<button class="flex items-center gap-2 bg-white border border-outline-variant px-4 py-1.5 rounded text-body-sm font-semibold text-on-surface hover:bg-slate-50 active:bg-slate-100 transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="download">download</span>
+                Export Data
+            </button>
+</div>
+<!-- AI Insight Banner -->
+<div class="mb-stack-md bg-blue-50/50 border border-blue-200 p-4 rounded-lg flex items-center gap-4">
+<div class="flex-shrink-0 bg-blue-100 text-blue-600 p-2 rounded">
+<span class="material-symbols-outlined" data-icon="lightbulb">lightbulb</span>
+</div>
+<div class="flex-1">
+<p class="text-body-md font-semibold text-blue-900">Automation Opportunity Detected</p>
+<p class="text-body-sm text-blue-700">AI has identified that 12% of "Function Query" tickets could be resolved by updating the API documentation. <a class="font-bold underline" href="#">Review suggestion</a></p>
+</div>
+<button class="text-blue-600 hover:text-blue-800">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+<!-- Ticket List Table -->
+<div class="bg-white border border-outline-variant rounded-lg overflow-hidden shadow-none">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low border-b border-outline-variant sticky top-0">
+<tr class=""><th class="px-4 py-3 font-label-caps text-secondary tracking-wider uppercase text-[11px] whitespace-nowrap" style="width: 100px;">Ticket ID</th>
+<th class="px-4 py-3 font-label-caps text-secondary tracking-wider uppercase text-[11px] whitespace-nowrap">Title</th>
+<th class="px-4 py-3 font-label-caps text-secondary tracking-wider uppercase text-[11px] whitespace-nowrap" style="width: 80px;">Date</th>
+<th class="px-4 py-3 font-label-caps text-secondary tracking-wider uppercase text-[11px] whitespace-nowrap" style="width: 120px;">Category</th>
+<th class="px-4 py-3 font-label-caps text-secondary tracking-wider uppercase text-[11px] whitespace-nowrap" style="width: 130px;">AI Confidence</th>
+<th class="px-4 py-3 font-label-caps text-secondary tracking-wider uppercase text-[11px] whitespace-nowrap" style="width: 110px;">Status</th>
+<th class="px-4 py-3 font-label-caps text-secondary tracking-wider uppercase text-[11px] whitespace-nowrap" style="width: 90px;">Action</th></tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-slate-50/50 transition-colors h-[56px]"><td class="py-4 font-mono-data text-blue-600 font-bold whitespace-nowrap align-middle text-[12px] px-4">#VOC-9281 <span class="material-symbols-outlined text-[12px]" data-icon="open_in_new">open_in_new</span></td>
+<td class="py-4 text-body-sm text-on-surface font-medium whitespace-nowrap align-middle text-[12px] px-4"><div class="flex flex-col gap-1"><span class="font-medium text-on-surface">API Authentication Error</span><div class="flex items-center gap-1.5 opacity-60"><div class="w-4 h-4 rounded-full bg-slate-200 flex items-center justify-center text-[8px] font-bold text-slate-600">JD</div><span class="text-[11px]">John Doe</span></div></div></td>
+<td class="py-4 text-body-sm text-on-surface-variant whitespace-nowrap align-middle text-[12px] px-4">1d ago</td>
+<td class="py-4 whitespace-nowrap align-middle text-[12px] px-4">
+<span class="px-2 py-0.5 bg-blue-100 text-blue-700 rounded text-[11px] font-bold uppercase tracking-tight">System Issue</span>
+</td>
+<td class="py-4 whitespace-nowrap align-middle text-[12px] px-4">
+<div class="flex items-center gap-2">
+<span class="font-mono-data text-green-600 font-bold">98%</span>
+<div class="w-16 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+<div class="bg-green-500 h-full w-[98%]"></div>
+</div>
+</div>
+</td>
+<td class="py-4 whitespace-nowrap align-middle text-[12px] px-4">
+<span class="flex items-center gap-1.5 text-on-surface font-medium">
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+Completed
+</span>
+</td>
+<td class="py-4 whitespace-nowrap align-middle text-[12px] px-4"><button class="font-bold text-outline hover:text-primary transition-colors text-[12px] underline">Details</button></td></tr>
+<tr class="hover:bg-slate-50/50 transition-colors border-l-4 border-orange-500 bg-orange-50/20 h-[56px]"><td class="py-4 font-mono-data text-blue-600 font-bold whitespace-nowrap align-middle text-[12px] px-4">#VOC-9284 <span class="material-symbols-outlined text-[12px]" data-icon="open_in_new">open_in_new</span></td>
+<td class="py-4 text-body-sm text-on-surface font-medium whitespace-nowrap align-middle text-[12px] px-4"><div class="flex flex-col gap-1"><span class="font-medium text-on-surface">New User Onboarding Guide</span><div class="flex items-center gap-1.5 opacity-60"><div class="w-4 h-4 rounded-full bg-blue-100 flex items-center justify-center text-[8px] font-bold text-blue-600">AS</div><span class="text-[11px]">Alice Smith</span></div></div></td>
+<td class="py-4 text-body-sm text-on-surface-variant whitespace-nowrap align-middle text-[12px] px-4">4h ago</td>
+<td class="py-4 whitespace-nowrap align-middle text-[12px] px-4">
+<span class="px-2 py-0.5 bg-purple-100 text-purple-700 rounded text-[11px] font-bold uppercase tracking-tight">Dev Request</span>
+</td>
+<td class="py-4 whitespace-nowrap align-middle text-[12px] px-4">
+<div class="flex items-center gap-2">
+<span class="font-mono-data text-orange-600 font-bold">72%</span>
+<div class="w-16 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+<div class="bg-orange-500 h-full w-[72%]"></div>
+</div>
+</div>
+</td>
+<td class="py-4 whitespace-nowrap align-middle text-[12px] px-4">
+<span class="flex items-center gap-1.5 text-on-surface font-medium">
+<span class="w-2 h-2 rounded-full bg-orange-400"></span>
+Pending
+</span>
+</td>
+<td class="py-4 whitespace-nowrap align-middle text-[12px] px-4"><button class="bg-blue-600 text-white px-3 py-1 rounded text-[11px] font-bold hover:bg-blue-700 active:scale-95 transition-all">Review</button></td></tr>
+<tr class="hover:bg-slate-50/50 transition-colors h-[56px]"><td class="py-4 font-mono-data text-blue-600 font-bold whitespace-nowrap align-middle text-[12px] px-4">#VOC-9287 <span class="material-symbols-outlined text-[12px]" data-icon="open_in_new">open_in_new</span></td>
+<td class="py-4 text-body-sm text-on-surface font-medium whitespace-nowrap align-middle text-[12px] px-4"><div class="flex flex-col gap-1"><span class="font-medium text-on-surface">Export Feature Request</span><div class="flex items-center gap-1.5 opacity-60"><div class="w-4 h-4 rounded-full bg-green-100 flex items-center justify-center text-[8px] font-bold text-green-600">RK</div><span class="text-[11px]">Robert King</span></div></div></td>
+<td class="py-4 text-body-sm text-on-surface-variant whitespace-nowrap align-middle text-[12px] px-4">2h ago</td>
+<td class="py-4 whitespace-nowrap align-middle text-[12px] px-4">
+<span class="px-2 py-0.5 bg-green-100 text-green-700 rounded text-[11px] font-bold uppercase tracking-tight">Function Query</span>
+</td>
+<td class="py-4 whitespace-nowrap align-middle text-[12px] px-4">
+<div class="flex items-center gap-2">
+<span class="font-mono-data text-green-600 font-bold">94%</span>
+<div class="w-16 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+<div class="bg-green-500 h-full w-[94%]"></div>
+</div>
+</div>
+</td>
+<td class="py-4 whitespace-nowrap align-middle text-[12px] px-4">
+<span class="flex items-center gap-1.5 text-on-surface font-medium">
+<span class="w-2 h-2 rounded-full bg-blue-400"></span>
+In Progress
+</span>
+</td>
+<td class="py-4 whitespace-nowrap align-middle text-[12px] px-4"><button class="font-bold text-outline hover:text-primary transition-colors text-[12px] underline">Details</button></td></tr>
+<tr class="hover:bg-slate-50/50 transition-colors h-[56px]"><td class="py-4 font-mono-data text-blue-600 font-bold whitespace-nowrap align-middle text-[12px] px-4">#VOC-9289 <span class="material-symbols-outlined text-[12px]" data-icon="open_in_new">open_in_new</span></td>
+<td class="py-4 text-body-sm text-on-surface font-medium whitespace-nowrap align-middle text-[12px] px-4"><div class="flex flex-col gap-1"><span class="font-medium text-on-surface">Slow Dashboard Load Times</span><div class="flex items-center gap-1.5 opacity-60"><div class="w-4 h-4 rounded-full bg-orange-100 flex items-center justify-center text-[8px] font-bold text-orange-600">ML</div><span class="text-[11px]">Mike Lewis</span></div></div></td>
+<td class="py-4 text-body-sm text-on-surface-variant whitespace-nowrap align-middle text-[12px] px-4">1h ago</td>
+<td class="py-4 whitespace-nowrap align-middle text-[12px] px-4">
+<span class="px-2 py-0.5 bg-blue-100 text-blue-700 rounded text-[11px] font-bold uppercase tracking-tight">System Issue</span>
+</td>
+<td class="py-4 whitespace-nowrap align-middle text-[12px] px-4">
+<div class="flex items-center gap-2">
+<span class="font-mono-data text-green-600 font-bold">91%</span>
+<div class="w-16 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+<div class="bg-green-500 h-full w-[91%]"></div>
+</div>
+</div>
+</td>
+<td class="py-4 whitespace-nowrap align-middle text-[12px] px-4">
+<span class="flex items-center gap-1.5 text-on-surface font-medium">
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+Completed
+</span>
+</td>
+<td class="py-4 whitespace-nowrap align-middle text-[12px] px-4"><button class="font-bold text-outline hover:text-primary transition-colors text-[12px] underline">Details</button></td></tr>
+<tr class="hover:bg-slate-50/50 transition-colors border-l-4 border-orange-500 bg-orange-50/20 h-[56px]"><td class="py-4 font-mono-data text-blue-600 font-bold whitespace-nowrap align-middle text-[12px] px-4">#VOC-9291 <span class="material-symbols-outlined text-[12px]" data-icon="open_in_new">open_in_new</span></td>
+<td class="py-4 text-body-sm text-on-surface font-medium whitespace-nowrap align-middle text-[12px] px-4"><div class="flex flex-col gap-1"><span class="font-medium text-on-surface">Mobile Responsive Layout</span><div class="flex items-center gap-1.5 opacity-60"><div class="w-4 h-4 rounded-full bg-purple-100 flex items-center justify-center text-[8px] font-bold text-purple-600">SH</div><span class="text-[11px]">Sarah Hall</span></div></div></td>
+<td class="py-4 text-body-sm text-on-surface-variant whitespace-nowrap align-middle text-[12px] px-4">30m ago</td>
+<td class="py-4 whitespace-nowrap align-middle text-[12px] px-4">
+<span class="px-2 py-0.5 bg-blue-100 text-blue-700 rounded text-[11px] font-bold uppercase tracking-tight">System Issue</span>
+</td>
+<td class="py-4 whitespace-nowrap align-middle text-[12px] px-4">
+<div class="flex items-center gap-2">
+<span class="font-mono-data text-orange-600 font-bold">81%</span>
+<div class="w-16 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+<div class="bg-orange-500 h-full w-[81%]"></div>
+</div>
+</div>
+</td>
+<td class="py-4 whitespace-nowrap align-middle text-[12px] px-4">
+<span class="flex items-center gap-1.5 text-on-surface font-medium">
+<span class="w-2 h-2 rounded-full bg-orange-400"></span>
+Pending
+</span>
+</td>
+<td class="py-4 whitespace-nowrap align-middle text-[12px] px-4"><button class="bg-blue-600 text-white px-3 py-1 rounded text-[11px] font-bold hover:bg-blue-700 active:scale-95 transition-all">Review</button></td></tr>
+</tbody>
+</table>
+<div class="px-6 py-4 bg-surface-container-low border-t border-outline-variant flex items-center justify-between">
+<p class="text-body-sm text-secondary font-medium">Showing 1 to 5 of 1,248 entries</p>
+<div class="flex items-center gap-2">
+<button class="w-8 h-8 rounded border border-outline-variant flex items-center justify-center text-outline hover:text-primary disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded bg-primary text-white text-body-sm font-bold">1</button>
+<button class="w-8 h-8 rounded border border-outline-variant text-body-sm font-bold text-on-surface hover:bg-slate-50">2</button>
+<button class="w-8 h-8 rounded border border-outline-variant text-body-sm font-bold text-on-surface hover:bg-slate-50">3</button>
+<span class="px-1 text-outline">...</span>
+<button class="w-8 h-8 rounded border border-outline-variant text-body-sm font-bold text-on-surface hover:bg-slate-50">25</button>
+<button class="w-8 h-8 rounded border border-outline-variant flex items-center justify-center text-outline hover:text-primary">
+<span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

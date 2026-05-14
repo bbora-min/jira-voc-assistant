@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Draft Review - VoC Analyzer</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#f6f3f5",
+                        "surface-container-highest": "#e4e2e4",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "outline-variant": "#c6c6cd",
+                        "primary-container": "#131b2e",
+                        "on-tertiary-container": "#98805d",
+                        "surface-variant": "#e4e2e4",
+                        "on-surface-variant": "#45464d",
+                        "on-tertiary-fixed": "#271901",
+                        "on-secondary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error": "#ffffff",
+                        "surface-container-high": "#eae7e9",
+                        "surface-container": "#f0edef",
+                        "surface": "#fcf8fa",
+                        "on-secondary-container": "#54647a",
+                        "secondary-container": "#d0e1fb",
+                        "on-primary-container": "#7c839b",
+                        "on-tertiary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "background": "#fcf8fa",
+                        "primary-fixed-dim": "#bec6e0",
+                        "secondary-fixed": "#d3e4fe",
+                        "outline": "#76777d",
+                        "on-primary-fixed": "#131b2e",
+                        "surface-tint": "#565e74",
+                        "inverse-on-surface": "#f3f0f2",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "on-secondary-fixed": "#0b1c30",
+                        "surface-dim": "#dcd9db",
+                        "tertiary": "#000000",
+                        "inverse-surface": "#303032",
+                        "tertiary-container": "#271901",
+                        "secondary": "#505f76",
+                        "primary": "#000000",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "surface-bright": "#fcf8fa",
+                        "on-background": "#1b1b1d",
+                        "primary-fixed": "#dae2fd",
+                        "tertiary-fixed": "#fcdeb5",
+                        "on-surface": "#1b1b1d",
+                        "inverse-primary": "#bec6e0",
+                        "on-primary": "#ffffff",
+                        "on-error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "gutter": "16px",
+                        "stack-lg": "32px",
+                        "container-margin": "24px",
+                        "table-row-height": "48px",
+                        "card-padding": "20px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "mono-data": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "title-sm": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-caps": ["Inter"]
+                    },
+                    "fontSize": {
+                        "mono-data": ["13px", {"lineHeight": "18px", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "title-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                        "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-caps": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background">
+<!-- Sidebar Component (Based on JSON) -->
+<nav class="flex flex-col fixed left-0 top-0 h-full p-4 space-y-2 w-64 h-screen border-r border-slate-200 bg-slate-50">
+<div class="flex items-center gap-3 px-2 mb-6">
+<div class="w-10 h-10 bg-primary-container rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-white" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<div>
+<h1 class="text-xl font-black text-slate-900">VoC Intel</h1>
+<p class="text-[10px] text-slate-500 font-bold tracking-widest uppercase">Precision Analysis</p>
+</div>
+</div>
+<button class="bg-blue-600 text-white font-medium py-2.5 px-4 rounded-md shadow-sm mb-4 hover:bg-blue-700 transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+            New Analysis
+        </button>
+<!-- Navigation Tabs -->
+<div class="space-y-1">
+<div class="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-slate-100 transition-all cursor-pointer rounded-md font-sans text-sm font-medium">
+<span class="material-symbols-outlined" data-icon="list_alt">list_alt</span>
+                Queue
+            </div>
+<div class="flex items-center gap-3 px-3 py-2 bg-white text-blue-600 shadow-sm border border-slate-200 rounded-md font-sans text-sm font-medium">
+<span class="material-symbols-outlined" data-icon="rate_review">rate_review</span>
+                Active Review
+            </div>
+<div class="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-slate-100 transition-all cursor-pointer rounded-md font-sans text-sm font-medium">
+<span class="material-symbols-outlined" data-icon="task_alt">task_alt</span>
+                Resolved
+            </div>
+<div class="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-slate-100 transition-all cursor-pointer rounded-md font-sans text-sm font-medium">
+<span class="material-symbols-outlined" data-icon="auto_settings">auto_mode</span>
+                Automation Rules
+            </div>
+<div class="flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-slate-100 transition-all cursor-pointer rounded-md font-sans text-sm font-medium">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+                System Health
+            </div>
+</div>
+<div class="mt-auto pt-4 border-t border-slate-200 space-y-1">
+<div class="flex items-center gap-3 px-3 py-2 text-slate-500 hover:text-slate-900 font-sans text-sm font-medium">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+                Documentation
+            </div>
+<div class="flex items-center gap-3 px-3 py-2 text-slate-500 hover:text-slate-900 font-sans text-sm font-medium">
+<span class="material-symbols-outlined" data-icon="support_agent">support_agent</span>
+                Support
+            </div>
+</div>
+</nav>
+<!-- Top App Bar Component -->
+<header class="fixed top-0 left-64 right-0 h-14 bg-white border-b border-slate-200 z-10 flex items-center justify-between px-6 font-sans antialiased text-sm">
+<div class="flex items-center gap-8">
+<span class="text-lg font-bold tracking-tight text-slate-900">VoC Analyzer</span>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-slate-500 hover:text-slate-700 transition-colors" href="#">Dashboard</a>
+<a class="text-blue-600 border-b-2 border-blue-600 pb-[15px] font-semibold" href="#">Tickets</a>
+<a class="text-slate-500 hover:text-slate-700 transition-colors" href="#">Insights</a>
+<a class="text-slate-500 hover:text-slate-700 transition-colors" href="#">Knowledge</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative group">
+<button class="p-2 text-slate-500 hover:bg-slate-50 transition-colors rounded-full">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</div>
+<button class="p-2 text-slate-500 hover:bg-slate-50 transition-colors rounded-full">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+<button class="p-2 text-slate-500 hover:bg-slate-50 transition-colors rounded-full">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-slate-200 overflow-hidden ml-2 border border-slate-300">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="A professional headshot of a senior software architect with short dark hair and a light beard, wearing a charcoal gray blazer. He is looking directly at the camera with a confident, analytical expression. The lighting is soft and even, typical of a high-end corporate studio session, set against a blurred, neutral office background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9jXzFwA_b5XQmgGv7n4SIMtlZeuNdiNOF1WZO-Y_zBtHGivTn_UAFAd7UgALGokmt4BIGDj-A6f0XuHP_HlrkkbS7qN0v3S1FSk3Y5APvrZ8BPyIqPkwh1PM8YYAQjdwuPgGKR5xl_zQwEW3HPig8T3KuqGYBse9vIUuO2tIjk7VabyFmvB2k4anBi9EOvSDe0hZeKoofKPVxxv2YA5_XK5PsmMT0AHB0vnF9wVtFxqLfdASrZDvHKHV8ag2JBCKn1i6i2cWMJRQ2"/>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="ml-64 mt-14 p-6 min-h-screen">
+<!-- Breadcrumbs & Header -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+<div>
+<nav class="flex items-center gap-2 text-slate-500 text-body-sm font-body-sm mb-1">
+<span>History</span>
+<span class="material-symbols-outlined text-[14px]" data-icon="chevron_right">chevron_right</span>
+<span class="font-mono-data text-mono-data text-slate-900">Ticket #VOC-9284</span>
+</nav>
+<div class="flex items-center gap-3">
+<h2 class="text-headline-md font-headline-md text-slate-900">New User Onboarding Guide</h2>
+<span class="px-2 py-0.5 bg-orange-50 text-orange-700 border border-orange-200 text-label-caps font-label-caps rounded">PENDING</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-4 py-2 bg-white border border-slate-300 text-slate-700 font-medium rounded hover:bg-slate-50 transition-all text-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="close">close</span>
+                    Reject
+                </button>
+<button class="px-4 py-2 bg-blue-600 text-white font-medium rounded hover:bg-blue-700 transition-all text-sm flex items-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-sm" data-icon="check">check</span>
+                    Approve
+                </button>
+</div>
+</div>
+<!-- Grid Layout -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Left Column: Work Area -->
+<div class="col-span-12 lg:col-span-8 space-y-gutter">
+<!-- AI Classification Card -->
+<div class="bg-white border border-slate-200 p-card-padding shadow-sm rounded">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-blue-600" data-icon="psychology">psychology</span>
+<span class="text-label-caps font-label-caps text-slate-500 uppercase tracking-wider">AI Classification</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-body-sm font-body-sm text-slate-600">Confidence:</span>
+<span class="text-body-sm font-semibold text-green-600">72%</span>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2 bg-slate-100 px-3 py-1.5 rounded border border-slate-200">
+<span class="text-mono-data font-mono-data font-bold text-slate-900">DEV REQUEST</span>
+</div>
+<div class="relative">
+<select class="appearance-none bg-white border border-slate-300 text-body-sm font-body-sm rounded px-3 py-1.5 pr-8 focus:ring-blue-500 focus:border-blue-500 outline-none">
+<option>Change category...</option>
+<option>Documentation</option>
+<option>Bug Report</option>
+<option>Billing</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1.5 text-slate-400 pointer-events-none" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
+</div>
+</div>
+</div>
+<!-- Original Message Card -->
+<div class="bg-white border border-slate-200 p-card-padding shadow-sm rounded">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-slate-400" data-icon="chat_bubble">chat_bubble</span>
+<span class="text-label-caps font-label-caps text-slate-500 uppercase tracking-wider">Original VoC Message</span>
+</div>
+<div class="flex gap-4">
+<div class="h-10 w-10 rounded-full bg-blue-100 flex-shrink-0 flex items-center justify-center text-blue-700 font-bold">AS</div>
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="text-body-md font-bold text-slate-900">Alice Smith</span>
+<span class="text-body-sm text-slate-500">• 2h ago</span>
+</div>
+<p class="text-body-md text-slate-700 leading-relaxed italic border-l-4 border-slate-100 pl-4 bg-slate-50 py-3 rounded-r">
+                                "I'm having trouble finding the initial setup guide for the new API. The documentation seems to jump straight into advanced endpoints, but I need the basic environment configuration steps first. Could you point me in the right direction?"
+                            </p>
+</div>
+</div>
+</div>
+<!-- AI Draft Editor -->
+<div class="bg-white border border-slate-200 shadow-sm rounded flex flex-col min-h-[500px]">
+<!-- Toolbar -->
+<div class="border-b border-slate-200 p-2 flex items-center gap-1 bg-slate-50">
+<button class="p-1.5 hover:bg-white rounded transition-colors text-slate-600">
+<span class="material-symbols-outlined text-[20px]" data-icon="format_bold">format_bold</span>
+</button>
+<button class="p-1.5 hover:bg-white rounded transition-colors text-slate-600">
+<span class="material-symbols-outlined text-[20px]" data-icon="format_italic">format_italic</span>
+</button>
+<button class="p-1.5 hover:bg-white rounded transition-colors text-slate-600">
+<span class="material-symbols-outlined text-[20px]" data-icon="format_list_bulleted">format_list_bulleted</span>
+</button>
+<div class="w-px h-6 bg-slate-200 mx-1"></div>
+<button class="p-1.5 hover:bg-white rounded transition-colors text-slate-600 flex items-center gap-1">
+<span class="material-symbols-outlined text-[20px]" data-icon="image">image</span>
+<span class="text-xs font-medium">Insert Image</span>
+</button>
+<div class="ml-auto flex items-center gap-2 px-2">
+<span class="text-[10px] text-slate-400 font-bold tracking-tighter uppercase">AI Generated Draft</span>
+<span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+</div>
+</div>
+<!-- Editor Content -->
+<div class="flex-grow p-6 text-body-md text-slate-800 leading-relaxed overflow-y-auto">
+<p>Hi Alice,</p>
+<p class="mt-4">Thank you for reaching out regarding the new API documentation. You're absolutely right—the current structure prioritizes endpoint references, and we are working on making the Quick Start guides more visible.</p>
+<p class="mt-4">To get started with your environment configuration, please follow these steps:</p>
+<ul class="list-disc ml-6 mt-2 space-y-1">
+<li>Ensure you have generated an <strong>API Key</strong> in your developer dashboard.</li>
+<li>Configure your base URL to <code>https://api.voc-analyzer.io/v1/</code>.</li>
+<li>Include the <code>x-api-version: 2024-05-01</code> header in all initial handshake requests.</li>
+</ul>
+<p class="mt-4">I've attached the full 'API Onboarding Guide v2.1' below for your reference. If you encounter any specific error codes during the setup, please let us know!</p>
+<p class="mt-6">Best regards,<br/>VoC Support Team</p>
+</div>
+</div>
+<!-- Bottom Actions -->
+<div class="flex items-center justify-between bg-slate-100 border border-slate-200 p-4 rounded">
+<div class="flex items-center gap-4">
+<div class="flex flex-col gap-1">
+<span class="text-label-caps font-label-caps text-slate-500 uppercase">Change Issue Status</span>
+<div class="relative min-w-[180px]">
+<select class="w-full appearance-none bg-white border border-slate-300 text-body-sm font-body-sm rounded px-3 py-2 pr-8 focus:ring-blue-500 focus:border-blue-500 outline-none">
+<option>No Change</option>
+<option selected="">In Progress</option>
+<option>Completed</option>
+<option>Pending</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-2 text-slate-400 pointer-events-none" data-icon="swap_vert">swap_vert</span>
+</div>
+</div>
+</div>
+<button class="px-4 py-2 text-error font-medium hover:bg-error-container/20 transition-all text-sm rounded flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="delete_sweep">delete_sweep</span>
+                        Reject Draft &amp; Log Reason
+                    </button>
+</div>
+</div>
+<!-- Right Column: Context/Reference -->
+<div class="col-span-12 lg:col-span-4 space-y-gutter">
+<!-- Reference Documents Panel -->
+<div class="bg-white border border-slate-200 shadow-sm rounded flex flex-col">
+<div class="p-card-padding border-b border-slate-100">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-blue-600" data-icon="travel_explore">travel_explore</span>
+<h3 class="text-title-sm font-title-sm text-slate-900">RAG Search Results</h3>
+</div>
+<span class="text-[10px] bg-slate-100 px-2 py-0.5 rounded text-slate-500 font-bold uppercase">3 Docs</span>
+</div>
+<p class="text-body-sm text-slate-500 mt-1">Contextual references retrieved by AI</p>
+</div>
+<div class="p-2 space-y-2">
+<!-- Entry 1 -->
+<div class="p-3 border border-slate-100 rounded hover:border-blue-200 hover:bg-blue-50/30 transition-all group cursor-pointer">
+<div class="flex items-center justify-between mb-2">
+<span class="text-[10px] text-blue-600 font-bold uppercase tracking-tight">Confluence</span>
+<span class="text-mono-data font-semibold text-green-600">95% match</span>
+</div>
+<h4 class="text-body-md font-bold text-slate-900 group-hover:text-blue-700 transition-colors">API Onboarding Guide v2.1</h4>
+<p class="text-body-sm text-slate-500 mt-1 line-clamp-2">"This document outlines the authentication and environment setup for developers using the REST API..."</p>
+<div class="mt-3 flex items-center justify-between">
+<span class="text-[10px] text-slate-400">Updated 4d ago</span>
+<span class="material-symbols-outlined text-slate-300 group-hover:text-blue-400" data-icon="open_in_new">open_in_new</span>
+</div>
+</div>
+<!-- Entry 2 -->
+<div class="p-3 border border-slate-100 rounded hover:border-blue-200 hover:bg-blue-50/30 transition-all group cursor-pointer">
+<div class="flex items-center justify-between mb-2">
+<span class="text-[10px] text-indigo-600 font-bold uppercase tracking-tight">Jira</span>
+<span class="text-mono-data font-semibold text-blue-500">88% match</span>
+</div>
+<h4 class="text-body-md font-bold text-slate-900 group-hover:text-blue-700 transition-colors">Similar issue #VOC-8842</h4>
+<p class="text-body-sm text-slate-500 mt-1 line-clamp-2">"Closed: User reported difficulty finding base endpoint. Suggested updating the main developer portal..."</p>
+<div class="mt-3 flex items-center justify-between">
+<span class="text-[10px] text-slate-400">Resolved Dec 12</span>
+<span class="material-symbols-outlined text-slate-300 group-hover:text-blue-400" data-icon="link">link</span>
+</div>
+</div>
+<!-- Entry 3 -->
+<div class="p-3 border border-slate-100 rounded hover:border-blue-200 hover:bg-blue-50/30 transition-all group cursor-pointer">
+<div class="flex items-center justify-between mb-2">
+<span class="text-[10px] text-slate-600 font-bold uppercase tracking-tight">Internal Wiki</span>
+<span class="text-mono-data font-semibold text-orange-500">74% match</span>
+</div>
+<h4 class="text-body-md font-bold text-slate-900 group-hover:text-blue-700 transition-colors">Troubleshooting Setup</h4>
+<p class="text-body-sm text-slate-500 mt-1 line-clamp-2">"Internal notes on common pitfalls when configuring the initial sandbox environment..."</p>
+<div class="mt-3 flex items-center justify-between">
+<span class="text-[10px] text-slate-400">Updated Jan 5</span>
+<span class="material-symbols-outlined text-slate-300 group-hover:text-blue-400" data-icon="description">description</span>
+</div>
+</div>
+</div>
+</div>
+<!-- AI Insight Banner -->
+<div class="p-4 rounded border border-blue-200 bg-gradient-to-r from-blue-50 to-white relative overflow-hidden">
+<div class="absolute -right-4 -top-4 opacity-10">
+<span class="material-symbols-outlined text-[120px] text-blue-600" data-icon="lightbulb">lightbulb</span>
+</div>
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-blue-600 text-lg" data-icon="auto_awesome">auto_awesome</span>
+<span class="text-label-caps font-label-caps text-blue-700 uppercase">Proactive Insight</span>
+</div>
+<p class="text-body-sm text-slate-700 leading-relaxed">
+                            Based on 5 similar inquiries this week, it is recommended to update the <strong>Onboarding Splash Screen</strong> with a direct link to API documentation.
+                        </p>
+<button class="mt-4 text-xs font-bold text-blue-600 hover:text-blue-800 transition-colors flex items-center gap-1 uppercase tracking-wider">
+                            Create Doc Update Task
+                            <span class="material-symbols-outlined text-xs" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Visual Data Widget -->
+<div class="bg-white border border-slate-200 p-4 rounded shadow-sm">
+<span class="text-label-caps font-label-caps text-slate-500 uppercase block mb-4">Sentiment Analysis</span>
+<div class="flex items-end gap-1 h-20 mb-2">
+<div class="bg-slate-100 flex-1 h-full rounded-t relative">
+<div class="absolute bottom-0 left-0 right-0 bg-error rounded-t" style="height: 15%;"></div>
+</div>
+<div class="bg-slate-100 flex-1 h-full rounded-t relative">
+<div class="absolute bottom-0 left-0 right-0 bg-blue-500 rounded-t" style="height: 65%;"></div>
+</div>
+<div class="bg-slate-100 flex-1 h-full rounded-t relative">
+<div class="absolute bottom-0 left-0 right-0 bg-green-500 rounded-t" style="height: 20%;"></div>
+</div>
+</div>
+<div class="flex justify-between text-[10px] font-bold text-slate-400">
+<span>NEG</span>
+<span>NEU</span>
+<span>POS</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

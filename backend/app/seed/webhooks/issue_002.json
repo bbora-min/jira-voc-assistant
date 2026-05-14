@@ -1,0 +1,16 @@
+{
+  "webhookEvent": "jira:issue_created",
+  "timestamp": 1746000600000,
+  "issue": {
+    "key": "SPIM-3002",
+    "fields": {
+      "summary": "라이선스 스캔에서 Apache-2.0 OR MIT 표현식 인식 안됨",
+      "description": "Compound license expression이 들어간 패키지를 스캔하면 Unknown license expression 에러가 발생합니다. 정상 동작하던 v2.3 환경에서 v2.4로 업그레이드 후 문제가 시작됐습니다.",
+      "reporter": {"accountId": "u-1102", "displayName": "박민서"},
+      "assignee": {"accountId": "spim-ops", "displayName": "SPIM 운영"},
+      "status": {"name": "To Do"},
+      "attachment": [{"filename": "scan-output.log", "size": 23456, "mimeType": "text/plain"}]
+    }
+  },
+  "changelog": {"id": "10002"}
+}
